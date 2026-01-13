@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html>
+<style>
+/* FOR PCCCS */
+@media screen and (min-width: 960px) {
+    #nav-bar{
+        font-size: 16px;
+    }
+    .nav-button{
+        visibility: hidden;
+    }
+    .box{
+        height: 500px;
+    }
+    .box-text{
+        height: 500px;
+    }
+    .text-head{
+        font-size: 24px;
+    }
+    .text-para{
+        font-size: 18px;
+    }
+}
+/* FOR TABLETS */
+@media screen and (max-width: 960px) {
+    #nav-bar{
+        font-size: 14px;
+    }
+    .nav-button{
+        visibility: hidden;
+    }
+    .box{
+        height: 500px;
+    }
+    .box-text{
+        height: 500px;
+    }
+    .text-head{
+        font-size: 24px;
+    }
+    .text-para{
+        font-size: 18px;
+    }
+}
+/* FOR PHONES */
+@media screen and (max-width: 768px) {
+    #nav-bar{
+        visibility: hidden;
+    }
+    .nav-button{
+        visibility: visible;
+    }
+    .box{
+        flex-direction: column;
+        border-style: solid !important;
+        border-bottom-left-radius: 5%;
+        border-bottom-right-radius: 5%;
+        border-radius: 5%;
+        overflow: hidden;
+        background-color: #F5F5F8;
+        height: 550px;
+    }
+    .box-pic{
+        height: 50% !important;
+        width: 100% !important;
+        order: 1 !important;
+    }
+    .box-text{
+        height: 60% !important;
+        width: 100% !important;
+        text-align: center !important;
+    }
+    .pos-left{
+        margin: 5%;
+    }
+    .pos-right{
+        margin-left: 5% !important;
+    }
+    .text-head{
+        margin-top: 3% !important;
+        font-size: 22px !important;
+        margin-bottom: 0% !important;
+    }
+    .text-para{
+        font-size: 15px;
+        margin: 3% !important;
+    }
+}
+
+@media (hover: hover) {
+    .nav-button:hover{
+        background-color: #e5e5ea;
+    }
+}
+
+@font-face {
+    font-family: "Orpheus-italic";
+    src: url("..s/fonts/orpheuspro-italic.otf");
+}
+@font-face {
+    font-family: "domaine-text";
+    src: url("../fonts/domaine-text.otf");
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background:#F5F5F8;
+
+}
+::-webkit-scrollbar-thumb {
+    background: gray;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+html{
+    scroll-behavior: smooth;
+}
+body{
+    margin: 0%;
+    padding: 0%;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+     user-select: none; /* Standard syntax */
+}
+#logo{
+    display: block;
+    text-decoration: none;
+    color: #000000;
+    position:relative;
+    width: 180px;
+    z-index: 100000;
+}
+#logo h1{
+    font-family:"domaine-text";
+    border:0;
+    margin-left:20px;
+    margin-top: 0;
+    font-weight: lighter;
+    width: 180px;
+}
+div.mainheader{
+    background-color: white;
+    height: 110px;
+    width: 100%;
+    margin: 0%;
+    padding: 0%;
+    position: sticky;
+    top:0;
+    z-index: 100;
+}
+
+#nav-bar{
+    position: absolute;
+    font-family: sans-serif;
+    width: 40%;
+    height:20px;
+    margin: auto;
+    z-index: 90;
+    top:24px;
+    left: 77%;  
+    transform: translate(-50%, 0);
+}
+#nav-bar a{
+    text-align:center;
+    float: left;
+    text-decoration: none;
+    color: #000000;
+    word-spacing: -2px;
+    font-weight:lighter;
+    width: 25%;
+}
+#nav-menu{
+    display: flex;
+    position: absolute;
+    top: 13px;
+    width: 1px;
+    height: 1px;
+    right: 0px;
+}
+#nav-menu input{
+    position: relative;
+    height: 0;
+    width: 0;
+
+}
+.nav-button{
+    cursor: pointer;
+    position: absolute;
+    top:0;
+    z-index: 4;
+    height: 30px;
+    width: 30px;
+    border-radius: 10%; 
+    right: 140%;
+    margin-right: calc(5vw);
+}
+#nav-menu input:checked ~ .nav-button{
+    background-color: #e5e5ea;
+}
+.nav-button{
+    background-color: #ffffff;
+}
+#nav-menu input:checked ~ .dropdown-content{
+    display: block;
+}
+#nav-menu input:checked ~ .nav-button .line{
+    top: 50%;
+}
+#nav-menu input:checked ~ #middleline{
+    display: block;
+}
+#nav-menu input:checked ~ #lastline{
+    transform: rotate(-45deg);
+}
+.line{
+    position: absolute;
+    background-color: rgb(0, 0, 0);
+    height: 3px;
+    width: 20px;
+    border-radius: 4px;
+    transition: 0.5s;
+    transform: translate(-50%,-50%);
+    left: 50%;
+}
+#firstline{
+    top: 30%;
+} 
+#middleline{
+    top: 50%;
+}
+#lastline{
+    top: 70%;
+} 
+.dropdown-content {
+    position:absolute;
+    height: 140px;
+    width:calc(100vw);
+    right: 0;
+    top:0px;
+    z-index: 3;
+    background-color: #ffffff;
+    padding-top: 50px;
+    bottom: 50px;
+    display: none;
+}
+.dropdown-content a{
+    float: none;
+    padding-left:7%;
+    height: 25%;
+    text-decoration: none;
+    color: #000000;
+    font-family: sans-serif;
+    font-weight:lighter;
+    top: 10px;
+    display: block;
+}
+
+/* MAIN Container */
+.head{
+    text-align: center;
+    font-weight: 100;
+    font-size: 28px;
+}
+.main{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+.box{
+    width: 90%;
+    display: flex;
+}
+.pos-left{
+    /* justify-content: flex-start; */
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-right-style: solid;
+    border-width: 2px;
+    border-color: #000000;
+}
+.pos-right{
+    /* justify-content: flex-end; */
+    margin-left: 10%;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-width: 2px;
+    border-color: #000000;
+}
+.box-pic{
+    position: relative;
+    width: 50%;
+    height: 100%;
+    margin: 0%;
+    padding: 0%;
+    overflow: hidden;
+}
+.box-left{
+    order: 1;
+}
+.box-right{
+    order: 2;
+
+}
+.box img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.box-text{
+    width: 50%;
+    overflow: hidden;
+}
+.text-head{
+    text-align: center;
+    font-weight: 100;
+    margin-top: 20%;
+    margin-bottom: 20px;
+    font-size: 32px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+.text-para{
+    margin-top: 5px;
+    margin-left: 12%;
+    margin-right: 10px;
+}
+footer{
+    text-align: center;
+    font-family: sans-serif;
+    font-size: small;
+    font-weight: 700;
+    color: rgb(80, 76, 76);
+}
+hr{
+    width: 90%;
+    border-width: 0px;
+    background-color: black;
+    height:2px;
+}
+</style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLOG | Foodistan</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="icon" href="../images/logo.jpg" type="image/icon type">
+    <link rel="stylesheet" href="../searchbar.css">
+</head>
+<body>
+    <div class="mainheader">
+        <div><a href="../index.html" id="logo"><h1>Foodistan</h1></a></div>
+            <label id="nav-menu">
+                <input type="checkbox">
+                <div class="nav-button">
+                    <div class="line" id="firstline"></div>
+                    <div class="line" id="middleline"></div>
+                    <div class="line" id="lastline"></div>
+                </div>
+                <div class="dropdown-content">
+                    <a href="../index.html">H O M E</a>
+                    <a href="#top">B L O G</a>
+                    <a href="../index.html#for-all-recipe-button">R E C I P E S</a>
+                    <a href="./submit.html">S U B M I T</a>
+                </div>
+            </label>
+            <div id="nav-bar">
+                <a href="../index.html">H O M E</a>
+                <a href="#top">B L O G</a>
+                <a href="../index.html#for-all-recipe-button">R E C I P E S</a>
+                <a href="./submit.html">S U B M I T</a>
+            </div>
+
+        <div>
+            <div id="search-bar-and-icon">
+            <svg id="search-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+                <path fill="currentColor" d="m19.485 20.154l-6.262-6.262q-.75.639-1.725.989t-1.96.35q-2.402 0-4.066-1.663T3.808 9.503T5.47 5.436t4.064-1.667t4.068 1.664T15.268 9.5q0 1.042-.369 2.017t-.97 1.668l6.262 6.261zM9.539 14.23q1.99 0 3.36-1.37t1.37-3.361t-1.37-3.36t-3.36-1.37t-3.361 1.37t-1.37 3.36t1.37 3.36t3.36 1.37" />
+            </svg> 
+            <input id="search-bar" type="text" placeholder="S E A R C H" onkeyup="searchRecipe()">
+            </div>
+            <div id="search-result">
+                <ul>
+                    <li id="burger" class="search-recipe">
+                        <a href="../recipes/burger.html"></a>
+                        <div><img src="../images/burger.jpg"></div>
+                        <h2>Beef Burger</h2>
+                        <span class="tag german">German</span>
+                        <p>High quality beef medium to well with cheese and sauces on a multigrain bun.</p>
+                        <hr>
+                    </li>
+                    <li id="pasta" class="search-recipe">
+                        <a href="../recipes/pasta.html"></a>
+                        <div><img src="../images/pasta.jpg"></div>
+                        <h2>Creamy Steak Pasta</h2>
+                        <span class="tag italian">Italian</span>
+                        <p>Creamy Steak Pasta is made with heavy cream, Parmesan cheese, sun dried tomatoes, pasta, and steak.</p>
+                        <hr>
+                    </li>
+                    <li id="lasgana" class="search-recipe">
+                        <a href="../recipes/lasagna.html"></a>
+                        <div><img src="../images/lasagna.jpeg"></div>
+                        <h2>Neapolitan Lasagna</h2>
+                        <span class="tag mexican">Mexican</span>
+                        <p>It is a dish of Italian origin, made with broad often ruffled noodles and a tomato or white sauce.</p>
+                        <hr>
+                    </li>
+                    <li id="tacos" class="search-recipe">
+                        <div><img src="../images/tacos.jpg"></div>
+                        <a href="../recipes/tacos.html"></a>
+                        <h2>Shrimp Tacos</h2>
+                        <span class="tag mexican">Mexican</span>
+                        <p>Shrimp Tacos are loaded with  juicy shrimp, crisp cabbage, avocado, cotija cheese, cilantro and shrimp taco sauce.</p>
+                        <hr>
+                    </li>
+                    <li id="biryani" class="search-recipe">
+                        <a href="../recipes/biryani.html"></a>
+                        <div><img src="../images/biryani.jpg"></div>
+                        <h2>Chicken Biryani</h2>
+                        <span class="tag desi">Desi</span>
+                        <p>Biryani is a mixed rice dish, mainly popular in South Asia. It is made with rice, chicken and spices.</p>
+                        <hr>
+                    </li>
+                    <li id="pizza" class="search-recipe">
+                        <a href="../recipes/pizza.html"  ></a>
+                        <div><img src="../images/pizza.jpeg"></div>
+                        <h2>New York Pizza</h2>
+                        <span class="tag italian">Italian</span>
+                        <p>New York-style pizza has large slices that are topped with tomato sauce and mozzarella cheese.</p>
+                        <hr>
+                    </li>
+                    <li id="sushi" class="search-recipe">
+                        <a href="../recipes/sushi.html"></a>
+                        <div><img src="../images/salmon.jpg"></div>
+                        <h2>Salmon Sushi</h2>
+                        <span class="tag japanese">Japanese</span>
+                        <p>Type of raw fish for sushi besides tuna, salmon is delicious both raw and lightly seared.</p>
+                        <hr>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <h1 class="head">Featured Blogs!</h1>
+<div class="main">
+    <div class="box pos-left">
+        <div class="box-pic box-left"><img src="../images/biryani.jpg"></div>
+        <div class="box-text box-right">
+            <h2 class="text-head">Making Biryani For The First Time:</h2>
+            <p class="text-para">Making biryani for the first time can be a challenge, with its layers of marinated meat and fragrant spices. The process might be tough, but the rich, complex flavors that emerge are incredibly rewarding. Each bite of your homemade biryani makes the effort worth it, turning a difficult cooking experience into a delicious triumph.</p>
+        </div>
+    </div>
+    <div class="box pos-right">
+        <div class="box-pic box-right"><img src="../images/tacos.jpg"></div>
+        <div class="box-text box-left">
+            <h2 class="text-head">Favourite Late Breakfast Recipe:</h2>
+            <p class="text-para">When the midnight munchies strike, tacos are the perfect late-night snack. Their versatility allows you to whip up a satisfying bite with whatever you have on hand, whether it’s a classic beef taco or a creative breakfast version with eggs and bacon. With their crisp shells and flavor-packed fillings, tacos offer a quick, delicious solution to your cravings, proving that they’re not just for daytime dining.</p>
+        </div>
+    </div>
+    <div class="box pos-left">
+        <div class="box-pic box-left"><img src="../images/burger.jpg"></div>
+        <div class="box-text box-right">
+            <h2 class="text-head">Wanting A Big Bad Burger:</h2>
+            <p class="text-para">When you’re really hungry and need a meal that hits the spot, a beef burger is hard to beat. Its juicy patty, hearty toppings, and satisfying bun create a perfect combination of flavors and textures that can tackle even the deepest hunger. Whether you prefer it with classic lettuce and tomato or loaded with extras like cheese, a well-made beef burger offers a delicious and fulfilling solution to your appetite.</p>
+        </div>
+    </div>
+    <div class="box pos-right">
+        <div class="box-pic box-right"><img src="../images/pasta.jpg"></div>
+        <div class="box-text box-left">
+            <h2 class="text-head">Trying Creamy Pasta Recipe For The First Time:</h2>
+            <p class="text-para">Trying creamy steak pasta for the first time is a delightful culinary adventure. This dish combines tender, juicy steak with a rich, creamy sauce and perfectly cooked pasta, creating a satisfying and indulgent meal. The steak adds a hearty, savory element, while the creamy sauce envelops the pasta in a luscious, comforting embrace. Creamy steak pasta is a delicious fusion that’s sure to impress your taste buds.</p>
+        </div>
+    </div>
+    <div class="box pos-left">
+        <div class="box-pic box-left"><img src="../images/pizza.jpeg"></div>
+        <div class="box-text box-right">
+            <h2 class="text-head">When It's a Movie Night:</h2>
+            <p class="text-para">Movie night and pizza are a match made in comfort food heaven. The warmth of a cheesy, melty pizza pairs perfectly with a cozy movie marathon, making it the ultimate choice for a relaxed evening. Whether you opt for a classic pepperoni, a veggie-loaded slice, or something like barbecue chicken, pizza's delicious combination of crispy crust, savory toppings, and gooey cheese adds an extra layer of enjoyment to your film-watching experience.</p>
+        </div>
+    </div>
+    <div class="box pos-right">
+        <div class="box-pic box-right"><img src="../images/lasagna.jpeg"></div>
+        <div class="box-text box-left">
+            <h2 class="text-head">Having A Party Or Friends Coming Over:</h2>
+            <p class="text-para">Lasagna is the perfect dish when friends come over, offering a hearty and comforting meal that’s sure to please a crowd. Its layers of rich meat sauce, creamy béchamel, and gooey cheese create a savory, satisfying feast that’s easy to serve and even easier to enjoy. Whether you make it with classic beef or a veggie twist, lasagna’s indulgent flavors and satisfying texture make it an ideal choice for a casual get-together, ensuring your friends leave with full bellies and happy hearts.</p>
+        </div>
+    </div>
+</div>
+<footer><hr><p>Copyright © 2024 HassaanDev. All Rights Reserved</p> </footer>  
+<script src="../script.js"></script>
+</body>
+</html>
